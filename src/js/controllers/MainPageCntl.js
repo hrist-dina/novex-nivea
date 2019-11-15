@@ -17,9 +17,9 @@ export class MainPageCntl {
     }
 
     init() {
-        this.initDeviceClassesSetter();
+        //this.initDeviceClassesSetter();
         this.initMenu();
-        this.initScrollToPage();
+        //this.initScrollToPage();
         this.initPaginator();
         this.initTicketForm();
         this.initSlider();

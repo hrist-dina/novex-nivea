@@ -96,31 +96,7 @@
       background-position: center bottom;
     }
   }
-
-  & .balloons {
-    &:before {
-      top: 0;
-      left: 0;
-      bottom: auto;
-      right: 0;
-      margin: auto;
-      content: '';
-      position: absolute;
-      width: 1841px;
-      height: 586px;
-      background: url('../img/page0/balloons.png') no-repeat top center;
-      z-index: 2;
-
-      @include lg-block() {
-        top: auto;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        background-size: cover;
-        background-position: center bottom;
-      }
-    }
-  }
+  
 
   & .girl {
     &:before {
