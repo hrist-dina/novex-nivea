@@ -1,13 +1,60 @@
-section#quest-map.page.page-4.js-page
-    .container.container_page-4.page__right
-        .quest-map
-            .quest-map__inner
-                h3.title.quest-map__title Карта квеста
-                .quest-map__desc Следи за подсказками, чтобы найти зашифрованный предмет и забрать свой заботливый клад!
-                .quest-map__info
-                    p Хочешь получать подсказки на email раньше других?
-                    p Участвуй в розыгрыше и зарегистрируйте чек из Новэкс на сумму от 500 ₽.
-                a(href='#register').button.button-red.js-scroll-link Зарегистрировать код с чека
-        include map-data
-        .map#map
+-
+    let winners = [
+        {
+            img: 'img/page4/card.png',
+            name: 'Антон Пампушный'
+        },
+        {
+            img: 'img/page4/phone.png',
+            name: 'Василий Власов'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Ольга Скамейкина'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Мирослав Евдокимов'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Иван Явлинский'
+        },
+        {
+            img: 'img/page4/card.png',
+            name:'Елена федорова'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Филипп Комаров'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Инна Якудина'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Евлампий Романов'
+        },
+        {
+            img: 'img/page4/card.png',
+            name: 'Софья Ржевская '
+        },
+    ];
 
+section#winners.page.page-4.js-page.js-winners
+    .container.container_winners.page__right.container_page-4
+        .content.content__full
+            h3.title.page-4__title
+                | Победители
+            .raffle-card__list.js-slider-container
+                for card in winners
+                    .raffle-card
+                        .raffle-card__top
+                            img(src=card.img, alt='')
+                        .raffle-card__name=card.name
+                        .raffle-card__bottom
+                            .raffle-card__city 5 мая 2019, г. Кемерово
+                            .raffle-card__number 295*****71
+            .copyright
+                | © 2019 Новэкс. Все права защищены

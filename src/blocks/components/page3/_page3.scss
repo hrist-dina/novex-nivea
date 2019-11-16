@@ -2,260 +2,56 @@
   & .container {
     width: 100%;
     display: flex;
-
     @include lg-block {
       flex-direction: column;
     }
   }
-}
 
-.card__info {
-  width: 33.333vw;
-  height: 100%;
-  background: url("../img/page3/bg-card.jpg") no-repeat center;
-  background-size: cover;
-  @include lg-block {
-    background-position: center 40%;
-    width: 100%;
-    height: 200px;
+  & .content__left {
+    position: relative;
+    width: 50vw;
+    margin: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    @include lg-block {
+      width: 100%;
+      height: 400px;
+    }
   }
-}
 
-
-.info {
+  & .content__right {
+    width: 50vw;
+    margin: 0;
+    z-index: 1;
+    padding-top: 11.68vh  /* 115/9.85 */;
+    padding-left: 6.771vw  /* 130/19.2 */;
+    padding-right: 8.75vw  /* 168/19.2 */;
+    background: url("../img/page3/bg-right.png"), #E3EDFF no-repeat center;
+    background-size: cover;
+    @include lg-block {
+      width: 100%;
+    }
+  }
 
   &__title {
-    color: #CA4D6C;
-    padding: 8px 16px;
-    background: #fff;
-    margin-bottom: 2.44vh  /* 24/9.85 */;
+    color: #03158B;
+    margin-bottom: 3.05vh  /* 30/9.85 */;
   }
 
-  &__description {
-    font-size: 2.74vh  /* 27/9.85 */;
-    color: #007FC6;
-    line-height: 32px;
-    font-weight: 500;
-
-    @include lg-block {
-      font-size: 22px;
-    }
-  }
-}
-
-.stages-info {
-  position: relative;
-  margin-top: 4.87vh  /* 48/9.85 */;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  z-index: 0;
-
-  &:before {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    position: absolute;
-    background: #CA4D6C;
-    transform: matrix(1, 0.03, -0.09, 1, 0, 0);
-    border-radius: 40px 0 0 0;
-    width: 95%;
-    height: 100%;
-    z-index: -1;
-    @include lg-block {
-      transform: matrix(1, 0.03, -0.03, 1, 0, 0);
-    }
-  }
-
-  &__inner {
-    border-radius: 40px 0 0 0;
-    background: #fff;
-    padding: 5.69vh  /* 56/9.85 */ 4.167vw /* 80/19.2 */;
-    box-sizing: border-box;
-    min-height: 76.19vh  /* 730.77/9.85 */;
-    z-index: 1;
-  }
-
-  &__list {
-    list-style-type: none; /* Убираем исходные маркеры */
-    counter-reset: num; /* Задаём имя счетчика */
-    padding-left: 0;
-    margin: 0;
-  }
-
-  &__item {
-    position: relative;
-    margin-bottom: 1.25vw  /* 24/19.2 */;
-    font-size: 1.62vh  /* 16/9.85 */;
-    line-height: 2.44vh  /* 24/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    padding-left: 3.125vw /* 60/19.2 */;
-    min-height: 5.58vh /* 55/9.85 */;
-
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-      padding-left: 40px;
-      margin-bottom: 20px;
-    }
-
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-
-    &::before {
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      right: auto;
-      margin: auto;
-      content: counter(num) '. '; /* Выводим число */
-      counter-increment: num; /* Увеличиваем значение счётчика */
-      font-size: 4.87vh /* 48/9.85 */;
-      line-height: 4.87vh;
-      color: #CA4D6C;
-      font-weight: normal;
-      font-style: normal;
-      @include lg-block {
-        font-size: 40px;
-        line-height: 40px;
-      }
-    }
+  &__text {
+    max-width: 580px;
+    font-size: 1.83vh  /* 18/9.85 */;
+    line-height: 3.05vh  /* 30/9.85 */;
+    color: #03158B;
+    margin-bottom: 3.86vh  /* 38/9.85 */;
 
     & a {
-      font-size: 1.62vh  /* 16/9.85 */;
-      color: #007FC6;
-      font-weight: 500;
-
-      @include lg-block {
-        font-size: 14px;
-        line-height: 20px;
-      }
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
-  }
-
-  &__text {
-    font-size: 4.06vh  /* 40/9.85 */;
-    line-height: 4.06vh  /* 40/9.85 */;
-    color: #CA4D6C;
-    font-weight: 500;
-    margin-bottom: 2.44vh  /* 24/9.85 */;
-  }
-}
-
-.participation {
-  background: #FFB4CF;
-  width: #{calc(100% - 33.333vw)} /* 640/19.2 */;
-
-  @include lg-block {
-    width: 100%;
-  }
-
-  &__inner {
-    padding: 6.5vh 7.292vw;
-    position: relative;
-  }
-}
-
-.regulations-info {
-  margin-top: 4.06vh  /* 40/9.85 */;
-
-  & a {
-    font-size: 1.62vh  /* 16/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    &:hover {
+      color: #03158B;
       text-decoration: none;
     }
-
   }
 
-  &__title {
-    font-size: 1.42vh  /* 14/9.85 */;
-    line-height: 2.03vh  /* 20/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-
-  &__description {
-    font-size: 1.42vh  /* 14/9.85 */;
-    line-height: 2.03vh  /* 20/9.85 */;
-    color: #007FC6;
-    font-weight: normal;
-    @include lg-block {
-      font-size: 12px;
-      line-height: 18px;
-    }
-  }
-
-}
-
-.social {
-  margin-top: 0.81vh  /* 8/9.85 */;
-  margin-bottom: -1.62vh  /* 16/9.85 */;
-
-  @include lg-block {
-    margin-top: 16px;
-  }
-
-  &__list {
-    display: flex;
-    vertical-align: middle;
-    flex-wrap: wrap;
-  }
-
-  &__item {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
+  & .button {
     margin-right: 1.5625vw  /* 30/19.2 */;
-    margin-bottom: 1.62vh  /* 16/9.85 */;
-
-    @include lg-block {
-      margin-right: 10px;
-      margin-bottom: 10px;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
-
-  }
-
-  &__text {
-    color: #CA4D6C;
-    font-size: 1.62vh  /* 16/9.85 */;
-    line-height: 2.54vh  /* 25/9.85 */;
-    font-weight: 500;
-    margin-left: 0.833vw  /* 16/19.2 */;
-    border-bottom: 0.5px solid #CA4D6C;
-
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-  &__item:hover &__text {
-    border-bottom-color: transparent;
   }
 }
- 

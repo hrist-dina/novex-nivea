@@ -1,4 +1,4 @@
-$columns: 12;
+$columns: 10;
 $atom: (100% / $columns);
 
 $break_xl: 1200px;
@@ -7,7 +7,7 @@ $break_md: 768px;
 $break_sm: 576px;
 $break_xs: 320px;
 
-$offset: 30px;
+$offset: 24px;
 $offset_xl: $offset;
 $offset_lg: $offset;
 $offset_md: $offset;
@@ -21,7 +21,7 @@ $offset_md_one_side: ($offset_md / 2);
 $offset_sm_one_side: ($offset_sm / 2);
 $offset_xs_one_side: ($offset_xs / 2);
 
-$fields: 15px;
+$fields: 14px;
 
 @mixin container-full(){
     padding-left: $fields;

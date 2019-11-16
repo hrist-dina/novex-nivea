@@ -29,7 +29,7 @@
   }
 
   & .content__right {
-    background: linear-gradient(180deg, #2167B9 4.77%, #FFFFFF 100%);
+    background: url('../img/noise.png'), linear-gradient(180deg, #2167B9 4.77%, #FFFFFF 100%);
     align-items: center;
     @include lg-block {
       padding: 20px 15px;
@@ -121,14 +121,18 @@
         font-size: 52px;
         line-height: 69px;
         color: #FF4F73;
+        padding-top: 45px;
+        padding-bottom: 50px;
+        box-sizing: border-box;
 
         &:before {
           content: 'x';
           position: relative;
           font-weight: bold;
           font-size: 32px;
-          line-height: 42px;
+          line-height:1;
           color: #FF4F73;
+          margin-right: 3px;
         }
       }
     }

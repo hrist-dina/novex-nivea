@@ -1,5 +1,62 @@
 .page-2 {
-  overflow: hidden;
+
+  &__title {
+    margin-top: 2.84vh  /* 28/9.85 */;
+    position: relative;
+    color: #fff;
+    z-index: 1;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.22vh  /* 12/9.85 */;
+  }
+
+  &__desc {
+    font-size: 3.25vh  /* 32/9.85 */;
+    line-height: 4.87vh  /* 48/9.85 */;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+
+  &__check {
+    position: absolute;
+    top: 30.46vh  /* 300/9.85 */;
+    bottom: 6.09vh  /* 60/9.85 */;
+    left: 0;
+    right: auto;
+    margin: auto;
+    width: 100%;
+    height: 682px;
+    z-index: 1;
+    & img {
+      display: inherit;
+      max-width: 549px;
+      width: 100%;
+      margin: auto;
+
+      @include to(1400px) {
+        margin: auto;
+      }
+    }
+
+    @include lg-block {
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+
+      & img {
+        display: inherit;
+        max-width: 771px;
+        max-height: 280px;
+        margin: auto auto 0 auto;
+        width: auto;
+      }
+    }
+  }
+
   & .container {
     width: 100%;
     display: flex;
@@ -8,245 +65,364 @@
     }
   }
 
-  & .card {
-    width: 33.333vw;
-    height: 100%;
-    background: url("../img/page2/bg-card.jpg") no-repeat center;
-    background-size: cover;
-    @include lg-block {
-      background-position: center 40%;
-      width: 100%;
-      height: 200px;
-    }
-  }
-
-  & .bg-container {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-.rules{
-  background: #E1F7FF;
-  width: #{calc(100% - 33.333vw)} /* 640/19.2 */;
-
-  @include lg-block {
-    width: 100%;
-  }
-
-  &__inner {
-    padding: 7.11vh 7.292vw;
+  & .content__left {
     position: relative;
-  }
-
-}
-
-.stages {
-  position: relative;
-  margin-top: 27px;
-  border-radius: 40px 0;
-  max-width: 718px;
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  margin-bottom: 2.84vh  /* 28/9.85 */;
-  z-index: 0;
-
-  @include to(1400px) {
-    max-width: 650px;
-  }
-
-  @include lg-block {
-    margin-bottom: 120px;
-  }
-
-  &:before {
-    content: '';
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    position: absolute;
-    background: #CA4D6C;
-    transform: matrix(1, 0.03, -0.09, 1, 0, 0);
-    border-radius: 40px 0;
-    width: 95%;
-    height: 100%;
-    z-index: -1;
-  }
-
-  &__inner {
-    border-radius: 40px 0;
-    background: #fff;
-    padding: 4.57vh  /* 45/9.85 */ 4.167vw  /* 80/19.2 */;
-    box-sizing: border-box;
-    z-index: 1;
-  }
-
-
-  &__list {
-    list-style-type: none; /* Убираем исходные маркеры */
-    counter-reset: num; /* Задаём имя счетчика */
-    padding-left: 0;
+    width: 50vw;
     margin: 0;
+    background: url('../img/noise.png'), linear-gradient(180deg, #2167B9 4.77%, #FFFFFF 100%);
+    @include lg-block {
+      width: 100%;
+      height: 400px;
+    }
   }
 
-  &__item {
-    position: relative;
-    margin-bottom: 2.44vh  /* 24/9.85 */;
-    font-size: 2.03vh  /* 20/9.85 */;
-    line-height: 2.74vh  /* 27/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    padding-left: 3.125vw  /* 60/19.2 */;
-    min-height: 5.58vh  /* 55/9.85 */;
+  & .content__right {
+    background: url('../img/noise.png'), #5A4282;;
+    width: 50vw;
+    margin: 0;
+    z-index: 1;
+    padding-left: 6.771vw  /* 130/19.2 */;
+    padding-right: 8.75vw  /* 168/19.2 */;
+    @include lg-block {
+      width: 100%;
+    }
+  }
+
+  & .content__title {
+    box-shadow: none;
+    &:before {
+      content: none;
+    }
+  }
+
+  & .block-vertical-center {
 
     @include lg-block {
-      padding-left: 35px;
-      font-size: 14px;
-      line-height: 20px;
-    }
-
-    &::before {
-      position: absolute;
-      left: 0;
+      transform: none;
       top: 0;
-      bottom: 0;
-      right: auto;
-      margin: auto;
-      content: counter(num) '. '; /* Выводим число */
-      counter-increment: num; /* Увеличиваем значение счётчика */
-      font-size: 4.87vh  /* 48/9.85 */;
-      line-height: 4.87vh;
-      color: #CA4D6C;
-      font-weight: normal;
-      font-style: normal;
     }
   }
 
-  &__text {
-    margin-top: 3.05vh  /* 30/9.85 */;
-    font-size: 2.44vh  /* 24/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-
-  &__results {
+  &__products {
     position: absolute;
-    right: -25%;
-    bottom: -10%;
-    padding: 27px;
-    width: 265px;
-    height: 102px;
-    box-sizing: border-box;
-    background: linear-gradient(271.36deg, #FFC0D7 -0.46%, #FFE3ED 98.93%);
-    border-radius: 22px 0;
-    transform: rotate(4.14deg);
-    font-size: 1.62vh  /* 16/9.85 */;
-    line-height: 2.44vh  /* 24/9.85 */;
-    color: #333333;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    z-index: -1;
 
-    @include to(1400px) {
-      right: -20%;
-      bottom: -10%;
-      width: 220px;
-      height: 80px;
-      padding: 18px;
-    }
-
-    @include lg-block {
+    & .deodorant,
+    & .roller,
+    & .cream ,
+    & .balsam {
       position: absolute;
-      right: auto;
-      bottom: auto;
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-}
-
-.partners {
-  padding: 5.08vh 0 6.09vh  0;
-
-  &__title {
-    color: #333333;
-    font-size: 1.62vh;
-    line-height: 2.03vh;
-    font-weight: normal;
-    margin-bottom: 1.62vh  /* 16/9.85 */;
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
-  }
-
-  &__list {
-    display: flex;
-    align-items: center;
-
-    @include lg-block {
-      flex-wrap: wrap;
-      margin-bottom: -30px;
-    }
-  }
-
-  &__item {
-    display: inline-block;
-    text-decoration: none;
-    margin-right: 30px;
-    @include lg-block {
-      margin-bottom: 30px;
+      display: inline-block;
+      background-size: contain;
+      z-index: -1;
     }
 
-    &:last-child {
-      margin-right: 0;
+    & .deodorant {
+      background: url("../img/page2/deodorant.png") no-repeat center;
+      width: 303px;
+      height: 447px;
+      left: 0;
+      bottom: 0;
+    }
+
+    & .roller {
+      background: url("../img/page2/roller.png") no-repeat center;
+      width: 219px;
+      height: 412px;
+      top: -10.66vh  /* -105/9.85 */;
+      left: 5.208vw  /* 100/19.2 */;
+    }
+
+    & .cream {
+      background: url("../img/page2/cream.png") no-repeat center;
+      width: 229px;
+      height: 229px;
+      top: -5.08vh  /* 50/9.85 */;
+      right: 9.635vw  /* 185/19.2 */;
+    }
+
+    & .balsam {
+      background: url("../img/page2/balsam.png") no-repeat center;
+      width: 254px;
+      height: 327px;
+      right: 3.125vw  /* 60/19.2 */;
+      bottom: 16.24vh  /* 160/9.85 */
     }
 
   }
 }
 
-.regulations {
 
-  & a {
-    font-size: 1.62vh  /* 16/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
-    &:hover {
-      text-decoration: none;
-    }
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
+.ticket-form {
 
+}
+
+.ticket-form__elem {
+  margin-bottom: 2.44vh  /* 24/9.85 */
+}
+
+.tablet .ticket-form__elem {
+  margin-bottom: 1vh;
+}
+
+.ticket-form__elem label {
+  position: relative;
+  display: block;
+}
+
+.ticket-form__elem-title {
+  white-space: nowrap;
+  position: absolute;
+  top: 14px;
+  left: 0;
+  color: #5a6555;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 2.2rem;
+  padding: 0 25px;
+  -moz-transition: top 0.3s ease, font-size 0.3s ease;
+  -webkit-transition: top 0.3s ease, font-size 0.3s ease;
+  transition: top 0.3s ease, font-size 0.3s ease;
+}
+
+.tablet .ticket-form__elem-title {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  top: 20px;
+}
+
+.ticket-form__elem input {
+  outline: none;
+  border: none;
+  background-color: #fff;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 3.3rem;
+  box-sizing: border-box;
+  height: 60px;
+  padding: 15px 25px 0;
+  width: 100%;
+  color: #15240d;
+  -moz-transition: border 0.3s ease;
+  -webkit-transition: border 0.3s ease;
+  transition: border 0.3s ease;
+
+  @include md-block {
+    height: 50px;
   }
-  &__title {
-    font-size: 1.62vh  /* 16/9.85 */;
-    line-height: 2.03vh  /* 20/9.85 */;
-    color: #007FC6;
-    font-weight: 500;
+}
 
-    @include lg-block {
-      font-size: 14px;
-      line-height: 20px;
-    }
+.tablet .ticket-form__elem input {
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  height: 80px;
+}
 
+.ticket-form__verification {
+  margin-bottom: 24px;
+  font-size: 1.62vh  /* 16/9.85 */;
+  line-height: 2.44vh  /* 24/9.85 */;
+  color: #fff;
+
+  @include lg-block {
+    margin-bottom: 2.44vh  /* 24/9.85 */;
+  }
+}
+
+.ticket-form__verification-check {
+  margin-top: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.ticket-form__verification-text {
+  width: #{calc(100% - 50px)};
+  display: inline-block;
+  vertical-align: top;
+}
+
+.ticket-form__verification-text a {
+  border: none;
+  color: #fff;
+  border-bottom: 1px solid transparent;
+  text-decoration: none;
+}
+
+.ticket-form__verification-text a:hover {
+  border-bottom: 1px solid #fff;
+}
+
+.ticket-form__elem.error input {
+  color: #ED395E;
+  border-color: #ED395E;
+}
+
+.ticket-form__elem.active input {
+  border-color: #569b28;
+}
+
+.active .ticket-form__elem-title {
+  top: 4px;
+  font-size: 0.87rem;
+  color: #5a6555;
+}
+
+.tablet .active .ticket-form__elem-title {
+  top: -20px;
+  font-size: 1.2rem;
+}
+
+.error .ticket-form__elem-title {
+  top: 4px;
+  font-size: 0.87rem;
+  color: #ED395E;
+}
+
+.tablet .error .ticket-form__elem-title {
+  top: -25px;
+  font-size: 1.2rem;
+  color: #ED395E;
+}
+
+.ticket-form__elem.success input {
+  border-color: #e5e9ed;
+}
+
+.success .ticket-form__elem-title{
+  top: 4px;
+  font-size: 0.87rem;
+  color: #5a6555;
+}
+
+.error.success .ticket-form__elem-title {
+  color: #FF4F73;
+}
+
+.tablet .success .ticket-form__elem-title{
+  top: -25px;
+  font-size: 1.2rem;
+  color: rgba(72, 11, 46, .6);
+}
+
+.ticket-form__error-text {
+  position: absolute;
+  bottom: -1.3em;
+  width: 100%;
+  color: #FF4F73;
+  font-size: 0.8em;
+  margin-top: 1px;
+  margin-bottom: 0;
+  @include lg-block {
+    font-size: 0.6em;
+    bottom: -1.6em;
+  }
+}
+
+.tablet .ticket-form__error-text {
+  height: 0;
+  position: relative;
+  top: 4px;
+}
+
+.Edge .ticket-form__error-text {
+  position: absolute;
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  .ticket-form__elem-title {
+    line-height: 1rem;
   }
 
-  &__description {
-    font-size: 1.62vh  /* 16/9.85 */;
-    line-height: 2.03vh  /* 20/9.85 */;
-    color: #007FC6;
-    font-weight: normal;
-    @include lg-block {
-      font-size: 12px;
-      line-height: 18px;
-    }
+  .ticket-form__elem input {
+    line-height: 1rem;
   }
 
+  .ticket-form__elem.error input {
+    color: #FF4F73;
+    border-color: #FF4F73;
+  }
+
+  .ticket-form__elem.active input {
+    border-color: rgb(230, 191, 0);
+  }
+
+  .active .ticket-form__elem-title {
+    top: -26px;
+    font-size: 0.87rem;
+    color: rgba(72, 11, 46, .6);
+  }
+
+  .error .ticket-form__elem-title {
+    top: -26px;
+    font-size: 0.87rem;
+    color: #FF4F73;
+  }
+
+  .ticket-form__elem.success input {
+    border-color: #e5e9ed;
+  }
+
+  .success .ticket-form__elem-title{
+    top: -26px;
+    font-size: 0.87rem;
+    color: rgba(72, 11, 46, .6);
+  }
+
+  .error.success .ticket-form__elem-title {
+    color: #FF4F73;
+  }
+
+  .ticket-form__error-text {
+    color: #FF4F73;
+    font-size: 0.8em;
+    margin-top: -2px;
+  }
+}
+
+.checkbox-hide {
+  display: none;
+}
+
+.checkbox-hide:checked + span {
+  background-color: transparent;
+}
+
+.checkbox-hide:checked + span:after {
+  content: "";
+  width: 21px;
+  height: 21px;
+  background-color: transparent;
+  background-image: url(icon-check());
+  background-position: center;
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.tablet .checkbox-hide:checked + span:after {
+  width: 50px;
+  height: 50px;
+}
+
+.checkbox-show {
+  vertical-align: top;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  display: inline-block;
+  cursor: pointer;
+
+  background: #C0D1EE;
+  .checkbox-hide:checked + &:after {
+    background-image: url(icon-check('C0D1EE'));
+    background-color: #03158B;
+  }
+}
+
+.tablet .checkbox-show {
+  width: 50px;
+  height: 50px;
 }

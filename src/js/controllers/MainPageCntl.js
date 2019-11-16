@@ -6,7 +6,6 @@ import {ScrollToPage} from "../classes/ScrollToPage";
 import {Paginator} from "../classes/Paginator";
 import {TicketForm} from "../classes/TicketForm";
 import {Parallax} from "../classes/Parallax";
-import {Map} from "../classes/Map";
 import {Winners} from "../classes/Winners";
 
 
@@ -25,7 +24,6 @@ export class MainPageCntl {
         this.initNavigationWinners();
         this.initInputMask();
         //this.initParallax();
-        //this.initMap();
         this.initWinners();
 
         this.events();
@@ -157,11 +155,6 @@ export class MainPageCntl {
             '.js-parallax-balloons',
             50
         );
-    }
-
-    initMap() {
-        let map = new Map('map');
-        map.init();
     }
 
     initWinners() {

@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { MainPageCntl } from "../controllers/MainPageCntl";
 import ScrollMagic from 'scrollmagic';
-import { TimelineMax, TweenMax, ScrollToPlugin, Linear } from "gsap/all";
+import { TimelineMax, TweenMax, ScrollToPlugin, Linear, Circ} from "gsap/all";
 import 'animation.gsap';
 import 'debug.addIndicators';
 
@@ -14,8 +14,10 @@ $(function () {
     let sections = document.querySelectorAll("section");
     let tl = new TimelineMax();
     let offset = window.innerHeight;
+    console.log(sections);
 
     for (let i = 1; i < sections.length; i++) {
+        console.log(sections[i]);
         tl.from(sections[i], 1, { xPercent: 200, ease: Linear.easeNone }, "+=1");
     }
 
