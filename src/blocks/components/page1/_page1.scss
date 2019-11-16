@@ -172,6 +172,11 @@
         position: relative;
         top: 23px;
         left: 10px;
+
+        @include lg-block {
+          top: 10px;
+          left: 5px;
+        }
       }
     }
 

@@ -53,6 +53,10 @@
       max-height: 80px;
       max-width: 80px;
     }
+
+    @include sm-block {
+      margin-top: -15px;
+    }
   }
 
   &__title {
@@ -70,6 +74,7 @@
     & a {
       color: #03158B;
       text-decoration: none;
+      white-space: nowrap;
     }
   }
 

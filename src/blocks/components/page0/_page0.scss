@@ -59,6 +59,11 @@
     background: url("../img/page0/bg-left.png"), linear-gradient(137.57deg, #03158B 2.78%, #00136F 67.68%) no-repeat center;
     background-size: cover;
 
+    @include lg-block {
+      height: auto;
+      min-height: 100vh;
+    }
+
     &:after {
       content: '';
       position: absolute;
@@ -88,7 +93,7 @@
     }
 
     @include sm-block {
-      height: 50vh;
+      height: 70vh;
     }
   }
 
@@ -123,35 +128,54 @@
   &__text {
     margin-top: 10.15vh  /* 100/9.85 */;
     z-index: 10;
-  }
-
-  .content__left &__text {
 
     @include lg-block {
       margin-top: 30px;
+      padding-bottom: 280px;
+    }
+
+    @include sm-block {
+      margin-top: 15px;
+      padding-bottom: 300px;
     }
   }
-
 
   &__date {
     font-size: 2.44vh  /* 24/9.85 */;
     line-height: 3.25vh  /* 32/9.85 */;
     color: #fff;
     margin-bottom: 1.62vh  /* 16/9.85 */;
+    @include lg-block {
+      font-size: 20px;
+      line-height: 32px;
+      margin-bottom: 16px;
+    }
   }
 
   & .title {
     color: #fff;
     font-size: 5.48vh  /* 54/9.85 */;
     line-height: 7.41vh  /* 73/9.85 */;
-    margin-bottom: 3.55vh  /* 35/9.85 */
+    margin-bottom: 3.55vh  /* 35/9.85 */;
+    font-weight: normal;
+
+    @include lg-block {
+      font-size: 36px;
+      line-height: 44px;
+      margin-bottom: 30px;
+    }
+
+    @include sm-block {
+      font-size: 28px;
+      line-height: 40px;
+    }
   }
 
 }
 
 .mouse {
   position: absolute;
-  top: 90.3vh;
+  top: 90%;
   left: 6.25vw  /* 120/19.2 */;
   width: 25px;
   height: 36px;

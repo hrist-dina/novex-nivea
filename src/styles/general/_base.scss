@@ -98,8 +98,13 @@ h1, h2, h3, h4, h5, h6, ul {
 	text-transform: uppercase;
 	color: #fff;
 	@include lg-block {
-		font-size: 4.47vh  /* 44/9.85 */;
-		line-height: 5.48vh  /* 54/9.85 */;
+		font-size: 44px;
+		line-height: 54px;
+	}
+
+	@include sm-block {
+		font-size: 34px;
+		line-height: 36px;
 	}
 }
 
@@ -114,6 +119,10 @@ h1, h2, h3, h4, h5, h6, ul {
 		margin-top: 50px;
 		width: 100%;
 		left: 0;
+	}
+
+	@include md-block {
+		margin-top: 30px;
 	}
 
 	&-en {
