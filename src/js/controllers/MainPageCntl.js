@@ -1,10 +1,9 @@
 import $ from "jquery";
 import slick from 'slick-carousel';
-import Inputmask from 'inputmask/dist/inputmask/inputmask.numeric.extensions'
+import Inputmask from 'inputmask/dist/inputmask/inputmask.numeric.extensions';
 import {Menu} from "../classes/Menu";
 import {ScrollToPage} from "../classes/ScrollToPage";
 import {Paginator} from "../classes/Paginator";
-import {DeviceClassesSetter} from "../classes/DeviceClassesSetter";
 import {TicketForm} from "../classes/TicketForm";
 import {Parallax} from "../classes/Parallax";
 import {Map} from "../classes/Map";
@@ -25,8 +24,8 @@ export class MainPageCntl {
         this.initSlider();
         this.initNavigationWinners();
         this.initInputMask();
-        this.initParallax();
-        this.initMap();
+        //this.initParallax();
+        //this.initMap();
         this.initWinners();
 
         this.events();
@@ -34,11 +33,6 @@ export class MainPageCntl {
 
     events() {
         this.bindScrollLinks();
-    }
-
-    initDeviceClassesSetter() {
-        this.deviceClassesSetter = new DeviceClassesSetter();
-        this.deviceClassesSetter.init();
     }
 
     initMenu() {

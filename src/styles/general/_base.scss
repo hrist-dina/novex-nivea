@@ -1,80 +1,14 @@
 body {
-	font-family: "Geometria", sans-serif;
 	font-size: 16px;
+	font-weight: normal;
+	font-family: "Nivea", sans-serif;
+	color: #fff;
 }
 
 h1, h2, h3, h4, h5, h6, ul {
 	padding: 0;
 	margin: 0;
 }
-
-
-
-
-
-
-body,
-html {
-	height: 100%;
-	font-size: 16px;
-	font-weight: normal;
-	font-family: "Roboto", sans-serif;
-	color: white;
-	background-color: #f0f0ee;
-	margin: 0px;
-	padding: 0;
-}
-
-h1 {
-	font-size: 32px;
-	color: white;
-	position: relative;
-	display: block;
-	top: 40%;
-	text-align: center;
-	text-transform: uppercase;
-}
-
-#pinContainer {
-	width: 100%;
-	height: 100vh;
-	overflow: hidden;
-	position: relative;
-
-	& .panel {
-		height: 100%;
-		width: 100%;
-		position: absolute;
-	}
-
-	#pinMaster {
-		position: relative;
-	}
-
-	.one {
-		background-color: #1bb1a5;
-	}
-	.two {
-		background-color: #94c356;
-	}
-	.three {
-		background-color: #e3aa59;
-	}
-	.four {
-		background-color: #777;
-	}
-
-	.five {
-		background-color: #a63ba0;
-	}
-	.six {
-		background-color: #cf5b21;
-	}
-
-}
-
-
-
 
 .pages {
 	width: 100%;
@@ -85,42 +19,14 @@ h1 {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .container {
+	width: 100%;
 	height: 100%;
-	//position: absolute;
-	left: 0;
-	right: 0;
 	box-sizing: border-box;
 }
 
-
-h2, .title-sm {
-	font: 500 44px/56px 'Geometria', sans-serif;
-	color: #fff;
-
-	@include lg-block {
-		font-size: 36px;
-		line-height: 46px;
-	}
-
-	@include sm-block {
-		font-size: 26px;
-		line-height: 36px;
-	}
-}
 .content {
-	padding: 4.67vh  /* 46/9.85 */ 7.1875vw  /* 138/19.2 */;
+	padding: 5.4vh /* 46/9.85 */ 6.25vw  /* 120/19.2 */;
 	max-width: 1560px;
 	margin: 0 auto;
 	box-sizing: border-box;
@@ -140,7 +46,7 @@ h2, .title-sm {
 	}
 
 	&__left {
-		padding-left: 9.38vw;
+		padding-left: 6.25vw  /* 120/19.2 */;
 	}
 
 	&__title {
@@ -177,6 +83,14 @@ h2, .title-sm {
 	overflow: hidden !important;
 }
 
+.uppercase {
+	text-transform: uppercase;
+}
+
+.lowercase {
+	text-transform: lowercase;
+}
+
 .title {
 	font-size: 4.87vh  /* 48/9.85 */;
 	line-height: 5.69vh  /* 56/9.85 */;
@@ -186,13 +100,8 @@ h2, .title-sm {
 }
 
 .logo {
-	position: absolute;
-	display: block;
-	background-image: url("../img/page0/logo.svg");
-	width: 174px;
-	height: 37px;
+	display: flex;
 	background-position: center;
-	background-size: contain;
 	background-repeat: no-repeat;
 	text-indent: -6000px;
 
@@ -201,12 +110,32 @@ h2, .title-sm {
 		width: 100%;
 		left: 0;
 	}
-}
 
-.container_brands-table {
-	padding: 5vh 0;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+	&-en {
+		display: inline-block;
+		background: url("../img/page0/logo-en.svg") no-repeat center;
+		width: 171px;
+		height: 31px;
+		margin-right: 20px;
+		background-size: contain;
+	}
+
+	&-symbol {
+		display: inline-block;
+		background: url("../img/page0/logo-symbol.svg") no-repeat center;
+		width: 51px;
+		height: 49px;
+		margin-right: 25px;
+		background-size: contain;
+	}
+
+	&-ru {
+		display: inline-block;
+		background: url("../img/page0/logo-ru.svg") no-repeat center;
+		width: 194px;
+		height: 31px;
+		background-size: contain;
+	}
 }
 
 .page {
@@ -214,6 +143,7 @@ h2, .title-sm {
 	overflow: hidden;
 	width: 100%;
 	position: absolute;
+	transition: all 1s ease;
 
 	&__part {
 		width: 50%;
@@ -256,38 +186,6 @@ h2, .title-sm {
 	height: auto;
 }
 
-.bg-absolute {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-
-	& svg {
-		width: 100%;
-	}
-}
-
-.bg-circle {
-	background-image: url(../img/page2/circle-pattern.svg);
-}
-
-.bg-square {
-	background: #2EC6F1 url(../img/page3/pattern-squre.svg) repeat;
-	background-size: contain;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 50%;
-	bottom: 0;
-}
-
-.bg-chess {
-	background: #007AC9 url(../img/page4/pattern-chess.svg) repeat;
-	background-size: 400px 400px;
-}
-
-
 @include lg-block {
 	.container {
 		width: 100%;
@@ -324,11 +222,36 @@ h2, .title-sm {
 	z-index: 1;
 }
 
-.bg-pink {
-	background: url("../img/common/bg-pink.jpg");
-}
+.button {
+	position: relative;
+	display: inline-block;
+	padding: 14px 30px;
+	border: none;
+	box-sizing: border-box;
+	color: #fff;
+	font-size: 1.83vh  /* 18/9.85 */;
+	line-height: 2.44vh  /* 24/9.85 */;
+	text-align: center;
+	text-decoration: none;
+	background: linear-gradient(99.37deg, #FF4F73 7.72%, #F74A54 92.55%);
+	border-radius: 32px;
+	cursor: pointer;
 
-.bg-confetti {
-	background: url("../img/common/bg-confetti.png"), linear-gradient(180deg, #C1E7F4 0%, rgba(193, 231, 244, 0.5) 100%);
-	background-color: #fff;
+	&:before {
+		content: '';
+		position: absolute;
+		top: -10px;
+		left: -10px;
+		width: #{calc(100% + 20px)};
+		height: #{calc(100% + 20px)};
+		padding: 10px;
+		border: 1px solid rgba(255, 79, 115, 0.4);
+		box-sizing: border-box;
+		border-radius: 43px;
+	}
+
+	@include lg-block {
+		font-size: 14px;
+		line-height: 20px;
+	}
 }

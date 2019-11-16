@@ -170,25 +170,6 @@
   }
 }
 
-.button {
-  display: inline-block;
-  padding: 18px 33px;
-  border: none;
-  box-sizing: border-box;
-  color: #fff;
-  font-size: 2.13vh  /* 21/9.85 */;
-  line-height: 2.64vh  /* 26/9.85 */;
-  text-align: center;
-  text-decoration: none;
-  background: #FF4F73;
-  cursor: pointer;
-
-  @include lg-block {
-    font-size: 14px;
-    line-height: 20px;
-  }
-}
-
 .partners {
   padding: 5.08vh 0 6.09vh  0;
 

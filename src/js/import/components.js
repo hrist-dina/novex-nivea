@@ -1,16 +1,22 @@
 import $ from "jquery";
-import {MainPageCntl} from "../controllers/MainPageCntl";
+import { MainPageCntl } from "../controllers/MainPageCntl";
+import ScrollMagic from 'scrollmagic';
+import { TimelineMax, TweenMax, ScrollToPlugin, Linear } from "gsap/all";
+import 'animation.gsap';
+import 'debug.addIndicators';
 
 $(function () {
     new MainPageCntl();
+
+
     console.clear();
-    var controller = new ScrollMagic.Controller();
-    var sections = document.querySelectorAll("section");
-    var tl = new TimelineMax();
-    var offset = window.innerHeight;
+    let controller = new ScrollMagic.Controller();
+    let sections = document.querySelectorAll("section");
+    let tl = new TimelineMax();
+    let offset = window.innerHeight;
 
     for (let i = 1; i < sections.length; i++) {
-        tl.from(sections[i], 1, { xPercent:100, ease: Linear.easeNone }, "+=1");
+        tl.from(sections[i], 1, { xPercent: 200, ease: Linear.easeNone }, "+=1");
     }
 
     new ScrollMagic.Scene({
@@ -28,6 +34,30 @@ $(function () {
         })
         .addTo(controller);
 
+
+    // change behaviour of controller to animate scroll instead of jump
+    controller.scrollTo(function (newpos) {
+        console.log(newpos);
+        TweenMax.to(window, .8, { scrollTo: {y: 500}, ease: Circ.easeOut}, "-=.5");
+    });
+
+    //  bind scroll to anchor links
+    $(document).on("click", "a[href^='#']", function (e) {
+        var id = $(this).attr("href");
+        if ($(id).length > 0) {
+            e.preventDefault();
+
+            // trigger scroll
+            controller.scrollTo(id);
+
+            // if supported by the browser we can even update the URL.
+            if (window.history && window.history.pushState) {
+                history.pushState("", document.title, id);
+            }
+        }
+    });
+
+
     $("section").each(function(i) {
         var tl = new TimelineMax();
 
@@ -42,7 +72,7 @@ $(function () {
                 colorTrigger: "white",
                 colorStart: "white",
                 colorEnd: "white",
-                indent: 40
+                indent: 1
             });
     });
 
