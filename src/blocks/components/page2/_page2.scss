@@ -7,6 +7,14 @@
     z-index: 1;
     letter-spacing: 0.04em;
     margin-bottom: 1.22vh  /* 12/9.85 */;
+
+    @include lg-block {
+      margin-top: 0;
+    }
+
+    @include sm-block {
+      font-size: 28px;
+    }
   }
 
   &__desc {
@@ -25,16 +33,25 @@
     right: auto;
     margin: auto;
     width: 100%;
-    height: 682px;
+    height: 69.24vh  /* 682/9.85 */;
     z-index: 1;
     & img {
       display: inherit;
       max-width: 549px;
-      width: 100%;
+      max-height: 100%;
       margin: auto;
 
       @include to(1400px) {
         margin: auto;
+      }
+    }
+
+    @include notebook {
+      height: auto;
+      & img {
+        max-width: 349px;
+        margin-top: auto;
+        margin-bottom: 0;
       }
     }
 
@@ -46,13 +63,20 @@
       height: 100%;
       display: flex;
       align-items: flex-end;
+      position: relative;
 
       & img {
         display: inherit;
         max-width: 771px;
-        max-height: 280px;
         margin: auto auto 0 auto;
         width: auto;
+      }
+    }
+
+    @include sm-block {
+      & img {
+        max-width: 400px;
+        width: 100%;
       }
     }
   }
@@ -72,7 +96,7 @@
     background: url('../img/noise.png'), linear-gradient(180deg, #2167B9 4.77%, #FFFFFF 100%);
     @include lg-block {
       width: 100%;
-      height: 400px;
+      overflow: hidden;
     }
   }
 
@@ -85,15 +109,10 @@
     padding-right: 8.75vw  /* 168/19.2 */;
     @include lg-block {
       width: 100%;
+      overflow: hidden;
     }
   }
 
-  & .content__title {
-    box-shadow: none;
-    &:before {
-      content: none;
-    }
-  }
 
   & .block-vertical-center {
 
@@ -110,6 +129,96 @@
     bottom: 0;
     z-index: -1;
 
+    @include to(360px) {
+      display: none;
+    }
+
+    @include lg-block {
+      left: 0;
+      right: 0;
+      margin: auto;
+      box-sizing: border-box;
+    }
+
+    & .deodorant {
+      background: url("../img/page2/deodorant.png") no-repeat center;
+      width: 15.78125vw  /* 303/19.2 */;
+      height: 45.38vh  /* 447/9.85 */;
+      left: 0;
+      bottom: 0;
+
+      @include lg-block {
+        left: -15px;
+        width: 303px;
+        height: 447px;
+      }
+
+      @include sm-block {
+        width: 203px;
+        height: 347px;
+      }
+    }
+
+    & .roller {
+      background: url("../img/page2/roller.png") no-repeat center;
+      width: 11.40625vw  /* 219/19.2 */;
+      height: 41.83vh  /* 412/9.85 */;
+      top: -10.66vh  /* -105/9.85 */;
+      left: 5.208vw  /* 100/19.2 */;
+
+      @include lg-block {
+        width: 219px;
+        height: 412px;
+        left: 0;
+      }
+
+      @include sm-block {
+        left: -15px;
+        width: 119px;
+        height: 312px;
+      }
+    }
+
+    & .cream {
+      background: url("../img/page2/cream.png") no-repeat center;
+      width: 11.927vw  /* 229/19.2 */;
+      height: 23.25vh  /* 229/9.85 */;
+      top: -5.08vh  /* 50/9.85 */;
+      right: 9.635vw  /* 185/19.2 */;
+
+      @include lg-block {
+        width: 229px;
+        height: 229px;
+      }
+
+      @include sm-block {
+        top: 0;
+        right: 0;
+        width: 129px;
+        height: 129px;
+      }
+    }
+
+    & .balsam {
+      background: url("../img/page2/balsam.png") no-repeat left center;
+      width: 13.229vw  /* 254/19.2 */;
+      height: 33.2vh  /* 327/9.85 */;
+      right: 3.125vw  /* 60/19.2 */;
+      bottom: 16.24vh  /* 160/9.85 */;
+
+      @include lg-block {
+        width: 254px;
+        height: 327px;
+        right: -25px;
+      }
+
+      @include sm-block {
+        width: 154px;
+        height: 227px;
+        right: -45px;
+      }
+    }
+
     & .deodorant,
     & .roller,
     & .cream ,
@@ -117,39 +226,8 @@
       position: absolute;
       display: inline-block;
       background-size: contain;
+      background-position: left center;
       z-index: -1;
-    }
-
-    & .deodorant {
-      background: url("../img/page2/deodorant.png") no-repeat center;
-      width: 303px;
-      height: 447px;
-      left: 0;
-      bottom: 0;
-    }
-
-    & .roller {
-      background: url("../img/page2/roller.png") no-repeat center;
-      width: 219px;
-      height: 412px;
-      top: -10.66vh  /* -105/9.85 */;
-      left: 5.208vw  /* 100/19.2 */;
-    }
-
-    & .cream {
-      background: url("../img/page2/cream.png") no-repeat center;
-      width: 229px;
-      height: 229px;
-      top: -5.08vh  /* 50/9.85 */;
-      right: 9.635vw  /* 185/19.2 */;
-    }
-
-    & .balsam {
-      background: url("../img/page2/balsam.png") no-repeat center;
-      width: 254px;
-      height: 327px;
-      right: 3.125vw  /* 60/19.2 */;
-      bottom: 16.24vh  /* 160/9.85 */
     }
 
   }
@@ -186,6 +264,13 @@
   -moz-transition: top 0.3s ease, font-size 0.3s ease;
   -webkit-transition: top 0.3s ease, font-size 0.3s ease;
   transition: top 0.3s ease, font-size 0.3s ease;
+
+  @include md-block {
+    font-size: 18px;
+    line-height: 22px;
+    padding: 0 15px;
+  }
+
 }
 
 .tablet .ticket-form__elem-title {
@@ -212,6 +297,7 @@
 
   @include md-block {
     height: 50px;
+    padding: 15px 15px 0;
   }
 }
 
@@ -228,7 +314,10 @@
   color: #fff;
 
   @include lg-block {
-    margin-bottom: 2.44vh  /* 24/9.85 */;
+    margin-top: 20px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: 24px;
   }
 }
 

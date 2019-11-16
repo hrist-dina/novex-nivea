@@ -1,3 +1,11 @@
+@mixin transition($time: .3s, $type: ease-in-out, $prop: all) {
+  -webkit-transition: $time $type $prop;
+  -moz-transition: $time $type $prop;
+  -ms-transition: $time $type $prop;
+  -o-transition: $time $type $prop;
+  transition: $time $type $prop;
+}
+
 @mixin rotate($deg: 180deg) {
   -webkit-transform: rotate($deg);
   -moz-transform: rotate($deg);
@@ -5,12 +13,51 @@
   -o-transform: rotate($deg);
   transform: rotate($deg);
 }
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  /* Firefox 19+ */
+  &:-moz-placeholder {
+    @content;
+  }
+  /* Firefox 18- */
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+@mixin outline-none() {
+  &:focus,
+  &:active {
+    outline: none;
+  }
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color:  rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
 @mixin scale($n: 2) {
   -webkit-transform: scale($n);
   -moz-transform: scale($n);
   -ms-transform: scale($n);
   -o-transform:scale($n);
   transform: scale($n);
+}
+
+@mixin notebook() {
+  @include to(1440px) {
+    @content;
+  }
 }
 
 @function icon-check($color: 'fff') {

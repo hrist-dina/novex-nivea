@@ -5,7 +5,7 @@
   right: 50%;
   left: 0;
   z-index: 1000;
-  background: #14A7DD;
+  background: url('../img/noise.png'), #03158B;
   -moz-transition: left 0.3s ease;
   -webkit-transition: left 0.3s ease;
   transition: left 0.3s ease;
@@ -77,24 +77,34 @@
   }
 }
 
-
-.desktop .menu__item.active .menu__link {
-  font: 700  40px/50px 'Geometria', Arial, Helvetica, sans-serif;
+.menu__item.active .menu__link {
   color: #fff;
 }
 
-.desktop .menu__item.active {
+.menu__item.active {
+  margin-top: 38px;
   margin-bottom: 38px;
 }
 
 .menu .menu__link {
-  font: 700 28px/35px 'Geometria', Arial, Helvetica, sans-serif;
   border-bottom: none;
   position: relative;
+  font-size: 40px;
+  line-height: 50px;
   color: #CAE3ED;
   border-bottom: none;
   text-decoration: none;
   cursor:pointer;
+
+  @include lg-block {
+    font-size: 28px;
+    line-height: 40px;
+  }
+
+  @include sm-block {
+    font-size: 24px;
+    line-height: 36px;
+  }
 }
 
 .menu .menu__link:hover {
@@ -113,14 +123,13 @@
 
 @media (min-aspect-ratio: 3/2) and (orientation: landscape) {
   .menu .menu__link {
-    //font: 500 4rem/1.76em 'Circe', Arial, Helvetica, sans-serif;
   }
 }
 
 .menu-panel {
   position: fixed;
-  left: 2.86vw;
-  top: 4.67vh  /* 46/9.85 */;
+  left: 2.34375vw  /* 45/19.2 */;
+  top: 4.57vh  /* 45/9.85 */;
   z-index: 999;
 
   @include lg-block {

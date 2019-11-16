@@ -18,10 +18,10 @@ $(function () {
 
     for (let i = 1; i < sections.length; i++) {
         console.log(sections[i]);
-        tl.from(sections[i], 1, { xPercent: 200, ease: Linear.easeNone }, "+=1");
+        //tl.from(sections[i], 1, { xPercent: 200, ease: Linear.easeNone }, "+=1");
     }
 
-    new ScrollMagic.Scene({
+   /* new ScrollMagic.Scene({
         triggerElement: "#pinMaster",
         triggerHook: "onLeave",
         duration: "500%"
@@ -40,7 +40,7 @@ $(function () {
     // change behaviour of controller to animate scroll instead of jump
     controller.scrollTo(function (newpos) {
         console.log(newpos);
-        TweenMax.to(window, .8, { scrollTo: {y: 500}, ease: Circ.easeOut}, "-=.5");
+        TweenMax.to(window, .8, { scrollTo: {y: newpos}, ease: Circ.easeOut}, "-=.5");
     });
 
     //  bind scroll to anchor links
@@ -48,6 +48,7 @@ $(function () {
         var id = $(this).attr("href");
         if ($(id).length > 0) {
             e.preventDefault();
+            console.log(id);
 
             // trigger scroll
             controller.scrollTo(id);
@@ -76,6 +77,6 @@ $(function () {
                 colorEnd: "white",
                 indent: 1
             });
-    });
+    });*/
 
 });

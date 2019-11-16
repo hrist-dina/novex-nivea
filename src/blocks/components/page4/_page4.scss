@@ -1,10 +1,11 @@
 .page-4 {
+    height: 100%;
     & .container {
         width: 100%;
         height: 100%;
         position: relative;
         display: flex;
-        background: url('../img/noise.png'), #03158B;;
+        background: url('../img/noise.png'), #03158B;
         @include lg-block {
             flex-direction: column;
         }
@@ -26,24 +27,24 @@
     font-size: 1.62vh  /* 16/9.85 */;
     line-height: 2.44vh  /* 24/9.85 */;
     color: #fff;
-    margin-top: 5.48vh  /* 54/9.85 */;
+    margin-top: 10.15vh  /* 100/9.85 */
 }
 
 .raffle {
     &-card {
         @include col();
         @include size(2);
+        @include size-lg(5);
         box-shadow: 6px 10px 12px rgba(0, 0, 0, 0.05);
         background: #fff;
         box-sizing: border-box;
-        margin-bottom: 2.64vh  /* 26/9.85 */;
+        margin-bottom: 26px;
 
+        @include notebook {
+            @include size(2.5);
+        }
 
         @include lg-block {
-            display: block !important;
-            max-width: 250px;
-            width: 100%;
-            height: 250px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -60,10 +61,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-
-            @include lg-block {
-                height: 125px;
-            }
 
             & img {
                 max-width: 100%;
@@ -111,6 +108,10 @@
     }
 }
 
+.slick-slide > div {
+    padding: 0 20px;
+    box-sizing: border-box;
+}
 
 .slick-dots {
     list-style-type: none;
