@@ -4,6 +4,11 @@ body {
 	font-family: "Nivea", sans-serif;
 	color: #fff;
 	min-width: 320px;
+	overflow: hidden;
+
+	@include lg-block {
+		overflow: inherit;
+	}
 }
 
 h1, h2, h3, h4, h5, h6, ul {
@@ -15,8 +20,26 @@ h1, h2, h3, h4, h5, h6, ul {
 	width: 100%;
 	position: relative;
 
+	@include lg-block {
+		&.o-hidden {
+			overflow: inherit !important;
+		}
+	}
+
 	&__wrapper {
-		position: relative;
+		overflow-x: hidden;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		margin-right: -17px;
+		-webkit-overflow-scrolling: touch;
+
+		@include lg-block {
+			margin-right: 0;
+			position: relative;
+		}
 	}
 }
 
@@ -154,13 +177,16 @@ h1, h2, h3, h4, h5, h6, ul {
 
 .page {
 	height: 100vh;
-	//overflow: hidden;
+	overflow: hidden;
 	width: 100%;
-	//position: absolute;
-	transition: all 1s ease;
+	position: absolute;
+	@include transition(1s, ease);
 
 	@include lg-block {
 		height: auto;
+		position: relative;
+		top: auto;
+		right: auto;
 	}
 
 	&__part {
@@ -177,6 +203,17 @@ h1, h2, h3, h4, h5, h6, ul {
 	&__full {
 		width: 100%;
 	}
+}
+
+.page {
+	top: 0;
+	right: -100%;
+	left: auto;
+}
+
+.page-0 {
+	z-index: 1;
+	right: 0;
 }
 
 .page-1 {
@@ -199,10 +236,32 @@ h1, h2, h3, h4, h5, h6, ul {
 	z-index: 600;
 }
 
-.page-6 {
-	z-index: 700;
-	height: auto;
+.page.is-show {
+	top: 0;
 }
+
+.page.is-show {
+	right: 0;
+}
+.page.is-hide {
+	z-index: 0;
+	right: 0;
+}
+
+.container_winners {
+	@include transition(1.2s, ease);
+}
+
+.page.is-show .container_winners {
+	right: 0;
+}
+.container_winners {
+	right: -100%;
+}
+.page.is-hide .container_winners {
+	right: -100%;
+}
+
 
 @include lg-block {
 	.container {

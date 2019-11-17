@@ -10,10 +10,20 @@ export class ScrollToPage {
     }
 
     init() {
-        this.events();
+        $(window).on('resize',() => {
+            if (!this.isMobile()) {
+                this.events();
+            } else {
+                this.pageScrollOwner.off('wheel');
+            }
+        }).resize();
     }
 
     //EVENTS
+
+    isMobile() {
+        return $(window).width() <= 992;
+    }
 
     events() {
         this.bindScrollPage();
@@ -43,6 +53,9 @@ export class ScrollToPage {
             }
             let link = $('.js-menu').find('.js-scroll-link').filter(`[href="#${linkToPage}"]`);
             Menu.prototype.setActiveLink(link);
+            if (!activePage.hasClass('.js-winners')) {
+                self.pageScrollOwner.addClass('o-hidden');
+            }
         });
     }
 
@@ -57,11 +70,11 @@ export class ScrollToPage {
     bindPositionTracking() {
         const self = this;
 
-        $('.js-winners').on('wheel', function (event) {
+        $('.js-winners:not(.is-hide)').on('wheel', function (event) {
             if ($(this).closest('.js-page').hasClass('is-show')) {
                 setTimeout(function () {
                     event.stopPropagation();
-                },2000);
+                }, 2000);
             }
 
             let height = $('.js-winners-content').map(function (i, item) {
@@ -75,7 +88,7 @@ export class ScrollToPage {
             let position = $(this).offset().top;
             let deltaY = event.originalEvent.deltaY;
 
-            if (deltaY < 0 && position === 0) {
+            if (deltaY < 0 && window.pageYOffset === 0 && position === 0) {
                 self.inScroll = true;
                 let pageWinners = $(this).closest('.js-page');
                 pageWinners.removeClass('is-show').addClass('is-hide');
@@ -86,6 +99,13 @@ export class ScrollToPage {
 
                 self.bindScrollPage();
                 self.bindScrollBan();
+                self.pageScrollOwner.addClass('o-hidden');
+            } else {
+                self.pageScrollOwner.removeClass('o-hidden');
+            }
+            if ($(this).hasClass('is-hide')) {
+                self.pageScrollOwner.addClass('o-hidden');
+                self.bindScrollPage();
             }
         });
     }
@@ -102,11 +122,14 @@ export class ScrollToPage {
                 this.pages.removeClass(['is-show', 'is-hide']);
             }
 
-            this.pages.eq(pageEq).addClass('is-show').siblings().removeClass('is-show');
+            let curPage = this.pages.eq(pageEq);
+
+            curPage.addClass('is-show').siblings().removeClass('is-show');
             $('.is-show').removeClass('is-hide').prev().addClass('is-hide');
 
             $('.js-menu__item').eq(pageEq).addClass('active').siblings().removeClass('active');
 
+            self.pageScrollOwner.addClass('o-hidden');
             setTimeout(function () {
                 self.inScroll = false;
             }, 1000);

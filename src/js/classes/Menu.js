@@ -78,6 +78,8 @@ export class Menu {
     }
 
     setActiveLink(link) {
-        if ( link ) link.closest('.menu__item').addClass('active').siblings().removeClass('active');
+        if ( link ) {
+            link.closest('.menu__item').addClass('active').siblings().removeClass('active');
+        }
     }
 }

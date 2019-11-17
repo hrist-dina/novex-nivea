@@ -6,8 +6,6 @@ import {ScrollToPage} from "../classes/ScrollToPage";
 import {Paginator} from "../classes/Paginator";
 import {TicketForm} from "../classes/TicketForm";
 import {Parallax} from "../classes/Parallax";
-import {Winners} from "../classes/Winners";
-
 
 export class MainPageCntl {
     constructor() {
@@ -15,16 +13,13 @@ export class MainPageCntl {
     }
 
     init() {
-        //this.initDeviceClassesSetter();
         this.initMenu();
-        //this.initScrollToPage();
+        this.initScrollToPage();
         this.initPaginator();
         this.initTicketForm();
         this.initSlider();
-        this.initNavigationWinners();
         this.initInputMask();
         //this.initParallax();
-        this.initWinners();
 
         this.events();
     }
@@ -78,14 +73,13 @@ export class MainPageCntl {
     }
 
     scrollToHref(link) {
-
         let scrollToElem = $(link.attr('href'));
         this.paginator.scrollTo(scrollToElem, link);
         this.menu.closeMenu();
     }
 
     initSlider() {
-        $('.js-slider-container').slick({
+        const settings = {
             mobileFirst: true,
             arrows: false,
             slidesPerRow: 1,
@@ -99,7 +93,7 @@ export class MainPageCntl {
                     settings: "unslick"
                 },
                 {
-                    breakpoint: 768,
+                    breakpoint: 992,
                     settings: {
                         mobileFirst: true,
                         arrows: false,
@@ -111,20 +105,16 @@ export class MainPageCntl {
                     }
                 },
             ]
-        });
-    }
+        };
 
-    initNavigationWinners() {
-        let winners = $('.js-winners__list').find('.winners__item');
-        winners.hover(function () {
-            $(this).addClass('active').removeClass('in-active');
-        },
-        function () {
-            $(this).addClass('in-active').removeClass('active');
+        const sl =
+            $('.js-slider-container').slick(settings);
+
+        $(window).on('resize',() => {
+            if( $(window).width() > 420 &&  !sl.hasClass('slick-initialized')) {
+                $('.js-slider-container').slick(settings);
+            }
         });
-        /*if (winners.length >= 3) {
-            $('.js-winners__navigation').show();
-        }*/
     }
 
     initInputMask() {
@@ -155,10 +145,5 @@ export class MainPageCntl {
             '.js-parallax-balloons',
             50
         );
-    }
-
-    initWinners() {
-        let winners = new Winners();
-        winners.init();
     }
 }

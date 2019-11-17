@@ -33,8 +33,9 @@ export class Paginator {
             }
         }
 
-        // $('body').hasClass('ios')
-        //     ? $('body').animate({scrollTop: targetElem.offset().top})
-        this.scrollOwner.animate({scrollTop: this.scrollOwner.scrollTop() + targetElem.offset().top});
+        $('html, body').animate({
+            scrollTop: this.scrollOwner.scrollTop() + targetElem.offset().top
+        }, 1000);
+
     }
 }
