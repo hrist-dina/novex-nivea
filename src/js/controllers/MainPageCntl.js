@@ -19,7 +19,7 @@ export class MainPageCntl {
         this.initTicketForm();
         this.initSlider();
         this.initInputMask();
-        //this.initParallax();
+        this.initParallax();
 
         this.events();
     }
@@ -133,17 +133,23 @@ export class MainPageCntl {
     initParallax() {
         new Parallax(
             '.js-parallax-page-0',
-            '.js-parallax-balloons'
-        );
-        new Parallax(
-            '.js-parallax-page-0',
-            '.js-parallax-balloon-29-year',
+            '.js-parallax-bg',
             50
         );
         new Parallax(
-            '.js-parallax-page-2',
-            '.js-parallax-balloons',
+            '.js-parallax-page-1',
+            '.js-parallax-bg-1',
             50
         );
+        // new Parallax(
+        //     '.js-parallax-page-0',
+        //     '.js-parallax-balloon-29-year',
+        //     50
+        // );
+        // new Parallax(
+        //     '.js-parallax-page-2',
+        //     '.js-parallax-balloons',
+        //     50
+        // );
     }
 }

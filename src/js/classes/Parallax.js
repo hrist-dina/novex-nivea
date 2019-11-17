@@ -5,6 +5,7 @@ export class Parallax {
             return;
         }
         this.element = this.boxerContainer.querySelector(selector);
+        console.log(this.element);
         this.ratio = ratio;
 
         this.maxMove = this.boxerContainer.offsetWidth / 30;
@@ -34,8 +35,9 @@ export class Parallax {
                 distX = mousePos.x - self.boxerCenterX,
                 distY = mousePos.y - self.boxerCenterY;
             if (self.fluidboxer.matches) {
-                self.element.style.transform = "translate(" + (-1 * distX) /  self.ratio + "px," + (-1 * distY) /  self.ratio + "px)";
-                // self.boxerContainer.style.backgroundPosition = `calc(50% + ${distX / 50}px) calc(50% + ${distY / 50}px)`;
+                console.log('test');
+                // self.element.style.transform = "translate(" + (-1 * distX) /  self.ratio + "px," + (-1 * distY) /  self.ratio + "px)";
+                self.element.style.backgroundPosition = `calc(50% + ${distX / 50}px) calc(50% + ${distY / 50}px)`;
             }
         });
     }

@@ -14,6 +14,9 @@
 
     & .content {
         max-width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
     }
 
     &__title {
@@ -28,7 +31,11 @@
     font-size: 1.62vh  /* 16/9.85 */;
     line-height: 2.44vh  /* 24/9.85 */;
     color: #fff;
-    margin-top: 10.15vh  /* 100/9.85 */
+    margin-top: 10.15vh  /* 100/9.85 */;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    flex: 1 0 auto;
 }
 
 .raffle {
