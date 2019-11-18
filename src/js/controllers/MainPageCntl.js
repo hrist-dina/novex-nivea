@@ -56,6 +56,28 @@ export class MainPageCntl {
             form: $('.js-ticket-form')
         });
         this.ticketForm.init();
+
+        $(".js-ticket-form-sms").on("submit", function() {
+            $(this).find(".ticket-form__error-text").remove();
+            $.ajax({
+                type: "POST",
+                url: "/local/script/ajax.php",
+                data: $(".js-ticket-form-sms").serialize(),
+                dataType: "json",
+                success: function (e) {
+                    if("success" === e.status) {
+                        $(".js-ticket-form-success").show();
+                        $(".js-ticket-form-success-after-action").hide().find("[name=sms]").val("");
+                        $(".js-ticket-form-success-after-action").find("[name=tel]").val("");
+                        //ym(55166008, 'reachGoal', 'sendform');
+                    }
+                    if("warning" === e.status) {
+                        $(".js-ticket-form-sms").find("button").before('<p class="ticket-form__error-text noabsolute nocolor">' + e.mess + "</p>");
+                    }
+                }
+            });
+            return false;
+        });
     }
 
     bindScrollLinks() {
@@ -128,6 +150,11 @@ export class MainPageCntl {
             showMaskOnHover: false,
         });
         imCard.mask($('.js-card-mask'));
+        let imCode = new Inputmask({
+            mask: '999999999999999999999',
+            showMaskOnHover: false,
+        });
+        imCode.mask($('.js-card-code'));
     }
 
     initParallax() {
