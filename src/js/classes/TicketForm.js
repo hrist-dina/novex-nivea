@@ -10,7 +10,9 @@ export class TicketForm {
         this.massages = {
             required: 'Поле обязательное для заполнения!',
             email: 'Некорректный Email адрес!',
-            phone: 'Некорректный телефон!'
+            phone: 'Некорректный телефон!',
+            code: "Некорректный уникальный код",
+            card: "Некорректный номер карты"
         };
 
     }
@@ -43,28 +45,37 @@ export class TicketForm {
         let self = this;
         $.ajax({
             type: "POST",
-            url: "/",
+            url: "/local/script/ajax.php",
             data: $(".js-ticket-form").serialize(),
             dataType: "json",
             success: function (data) {
-                if (data.status === 'success') {
+                if (data.status == 'smscheck') {
+                    $(".js-ticket-form-success-after-action").find("[name=tel]").val(data.tel);
+                    self.smsCheck();
+                }
+                else if (data.status == 'success' ) {
                     self.showSuccessMessage();
                 }
-                if (data.status === 'error') {
-                    console.error('error | ' + data.message);
+                else if (data.status == 'warning' && data.code) {
+                    let errors = {};
+                    errors[data.code] = data.mess;
+                    self.setErrors(errors, $('.js-ticket-form'));
                 }
-                if (data.status === 'warning') {
-                    console.error('warning | ' + data.message);
-                    self.setErrors(data.errors, $('.js-ticket-form'));
+                else {
+                    self.showErrMessage();
                 }
             },
             error: function (data) {
-
-                // TODO:: Удалить, после переноса на бэкенд
                 self.showSuccessMessage();
-                console.error('error ajax');
             }
         });
+    }
+
+    smsCheck () {
+        $('.js-ticket-form-success').hide();
+        $('.js-ticket-form-success-after-action').show();
+        //ym(55166008, 'reachGoal', 'reg_code');
+        //self.showSuccessMessage();
     }
 
     get fields() {
@@ -75,30 +86,37 @@ export class TicketForm {
         let errors = {};
         this.fields.map((key, item) => {
             let value = $(item).val();
-            let id  = $(item).attr('id');
+        let id  = $(item).attr('id');
 
-            if ($(item).data(this.requireFiled) === true && this.constructor.checkEmpty(value)) {
-                errors[id] = this.massages.required;
-            }
+        if ($(item).data(this.requireFiled) === true && this.constructor.checkEmpty(value)) {
+            errors[id] = this.massages.required;
+        }
 
-            if (!this.constructor.checkEmpty(value)) {
-                switch ($(item).data(this.typeFiled)) {
-                    case 'email':
+        if (!this.constructor.checkEmpty(value)) {
+            switch ($(item).data(this.typeFiled)) {
+                case 'email':
                     if (this.constructor.checkEmail(value)) {
-                            errors[id] = this.massages.email;
-                        }
-                        break;
-                    case 'phone':
-                        if (this.constructor.checkPhone(value)) {
-                            errors[id] = this.massages.phone;
-                        }
-                        break;
-                    default:
-                        break;
-                }
+                        errors[id] = this.massages.email;
+                    }
+                    break;
+                case 'phone':
+                    if (this.constructor.checkPhone(value)) {
+                        errors[id] = this.massages.phone;
+                    }
+                    break;
+                default:
+                    break;
             }
+            if ("card" == $(item).attr("name")) {
+                var s = value.substr(0, 3);
+                if(12 != value.length || "295" != s && "296" != s)
+                    errors[id] = this.massages.card;
+            }
+            if ("code" == $(item).attr("name") && 21 != value.replace(/\D+/g, "").length)
+                errors[id] = this.massages.code;
+        }
 
-        });
+    });
 
         this.clearErrors();
         this.setErrors(errors);
@@ -150,6 +168,8 @@ export class TicketForm {
         let self = this;
         $('.js-close-form-success-message').on('click', function () {
             $('.js-ticket-form-success').hide();
+            $('.js-ticket-form-success-after-action').hide();
+            $('.js-ticket-form-success-before-action').hide();
             self.resetTextInputs();
         });
     }
@@ -163,7 +183,15 @@ export class TicketForm {
     }
 
     showSuccessMessage() {
+        $(".js-ticket-form-success-after-action, .js-ticket-form-success-before-action").hide();
+        $(".js-ticket-form-success-after-action").find("[name=tel]").val('');
         $('.js-ticket-form-success').show();
+    }
+
+    showErrMessage() {
+        $(".js-ticket-form-success, .js-ticket-form-success-before-action").hide();
+        $(".js-ticket-form-success-after-action").find("[name=tel]").val('');
+        $('.js-ticket-form-success-before-action').show();
     }
 
     resetTextInputs() {
